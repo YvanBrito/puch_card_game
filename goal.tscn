@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://22nwnwokciof"]
+
+[ext_resource type="Texture2D" uid="uid://db7xtccju2at1" path="res://paper.png" id="1_0qle8"]
+[ext_resource type="Script" uid="uid://c1ua1hbfvhjeu" path="res://path.gd" id="2_p20yd"]
+
+[sub_resource type="Animation" id="Animation_jnavc"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3.2500002, 3.2500007), Vector2(4.2500005, 4.250001), Vector2(3.25, 3.25)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_step"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.19215687)]
+}
+
+[sub_resource type="Animation" id="Animation_ckofj"]
+resource_name = "highlight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3.2500002, 3.2500007), Vector2(4.2500005, 4.250001), Vector2(3.25, 3.25)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_step"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.27),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.22352941), Color(0.1764706, 1, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xr8s"]
+_data = {
+&"RESET": SubResource("Animation_jnavc"),
+&"highlight": SubResource("Animation_ckofj")
+}
+
+[node name="Goal" type="Sprite2D" unique_id=1316519693]
+modulate = Color(1, 1, 1, 0.19215687)
+scale = Vector2(3.2500002, 3.2500007)
+texture = ExtResource("1_0qle8")
+script = ExtResource("2_p20yd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1462595716]
+libraries/ = SubResource("AnimationLibrary_0xr8s")

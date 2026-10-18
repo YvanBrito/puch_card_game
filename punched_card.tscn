@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://cuwpoiqu0qoka"]
+
+[ext_resource type="Script" uid="uid://bfqmiy3a7833" path="res://punchedcard.gd" id="1_e42ig"]
+[ext_resource type="Texture2D" uid="uid://8ybhcfeouj3l" path="res://paper-corner.png" id="2_oa5uu"]
+[ext_resource type="Texture2D" uid="uid://db7xtccju2at1" path="res://paper.png" id="3_jqfqd"]
+
+[sub_resource type="Gradient" id="Gradient_e42ig"]
+offsets = PackedFloat32Array(0, 0.0036363637, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8w0r3"]
+gradient = SubResource("Gradient_e42ig")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
+size = Vector2(368, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnrwc"]
+
+[sub_resource type="Animation" id="Animation_mnrwc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e42ig"]
+resource_name = "falling"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 532)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"collect_data"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oa5uu"]
+_data = {
+&"RESET": SubResource("Animation_mnrwc"),
+&"falling": SubResource("Animation_e42ig")
+}
+
+[node name="PunchedCard" type="Node2D" unique_id=950101193]
+script = ExtResource("1_e42ig")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1210005412]
+modulate = Color(0, 0, 0, 0.3372549)
+position = Vector2(195.00002, 116.5)
+scale = Vector2(5.5312505, 3.6093748)
+texture = SubResource("GradientTexture2D_8w0r3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=475126415]
+modulate = Color(0, 0, 0, 0.3372549)
+position = Vector2(9, 125)
+scale = Vector2(0.28125033, 3.34375)
+texture = SubResource("GradientTexture2D_8w0r3")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1601355475]
+modulate = Color(0, 0, 0, 0.3372549)
+position = Vector2(9.0000305, 9.5)
+scale = Vector2(4.4999967, 4.249999)
+texture = ExtResource("2_oa5uu")
+
+[node name="Corner" type="Sprite2D" parent="." unique_id=1130985705]
+position = Vector2(10.000015, 10.000004)
+scale = Vector2(4.000001, 3.9999986)
+texture = ExtResource("2_oa5uu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=87820698]
+position = Vector2(193.31253, 116.000015)
+scale = Vector2(21.960934, 14.250001)
+texture = ExtResource("3_jqfqd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=138906931]
+position = Vector2(10.000046, 124.000015)
+scale = Vector2(0.99999744, 13.25)
+texture = ExtResource("3_jqfqd")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1202345262]
+position = Vector2(133.00002, 39)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1734443050]
+position = Vector2(53, -28)
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=676234703]
+position = Vector2(133, 249)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1185497892]
+position = Vector2(53, -28)
+shape = SubResource("RectangleShape2D_mnrwc")
+
+[node name="punches" type="Node2D" parent="." unique_id=2118263712]
+position = Vector2(22.000015, 39)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=761882430]
+libraries/ = SubResource("AnimationLibrary_oa5uu")

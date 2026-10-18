@@ -1,0 +1,254 @@
+[gd_scene format=3 uid="uid://ckb1lgwk7plhg"]
+
+[ext_resource type="Script" uid="uid://sk1qr7l11sj6" path="res://card_manager.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://db7xtccju2at1" path="res://paper.png" id="2_0xm2m"]
+[ext_resource type="FontFile" uid="uid://dn48mto3khq0a" path="res://Monocraft.ttf" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://bick7kb5rrm6w" path="res://field.gd" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
+size = Vector2(524, 330)
+
+[node name="Node2D" type="Node2D" unique_id=336351371]
+
+[node name="CardManager" type="Node2D" parent="." unique_id=1407272815]
+script = ExtResource("1_lquwl")
+
+[node name="Urna" type="Node2D" parent="." unique_id=53242433]
+z_index = 4
+position = Vector2(1021, 719)
+
+[node name="Sprite2D" type="Sprite2D" parent="Urna" unique_id=582067500]
+scale = Vector2(32.468746, 8.031247)
+texture = ExtResource("2_0xm2m")
+
+[node name="Area2D" type="Area2D" parent="Urna" unique_id=586332583]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Urna/Area2D" unique_id=260673355]
+position = Vector2(2, 99)
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Urna" unique_id=457578]
+offset_left = -156.0
+offset_top = -57.0
+offset_right = 154.0
+offset_bottom = -17.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_1bvp3")
+text = "Insert your card here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Field" type="Node2D" parent="." unique_id=717113123]
+position = Vector2(223, 254)
+script = ExtResource("3_h2yge")
+
+[node name="Control" type="Control" parent="." unique_id=2017196635]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1274.0
+offset_bottom = 717.0
+mouse_filter = 2
+
+[node name="NewCardButton" type="Button" parent="Control" unique_id=1893528374]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -333.0
+offset_top = 71.0
+offset_right = -249.0
+offset_bottom = 102.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+text = "New Card"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=201228169]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -191.0
+offset_bottom = 116.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_1bvp3")
+text = "Up = 0 | 4
+Left = 12 | 3
+Right = 12 | 9
+Down = 11 | 4
+Get = 11 | 7"
+vertical_alignment = 1
+
+[node name="ErrorsLabel" type="RichTextLabel" parent="Control" unique_id=376124388]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -131.0
+offset_right = 583.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_1bvp3")
+vertical_alignment = 1
+
+[node name="cards_quantity_label" type="RichTextLabel" parent="Control" unique_id=1315020468]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -368.0
+offset_top = 2.0
+offset_right = -215.0
+offset_bottom = 69.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_1bvp3")
+text = "You have 
+5 
+cards"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LostPanel" type="Panel" parent="Control" unique_id=1211219108]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -190.0
+offset_right = 319.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/LostPanel" unique_id=835228113]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -77.5
+offset_right = 23.0
+offset_bottom = -54.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You lost!!! :("
+
+[node name="BackMenuButton" type="Button" parent="Control/LostPanel" unique_id=467514227]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 5.5
+offset_right = 58.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart Game"
+
+[node name="WinPanel" type="Panel" parent="Control" unique_id=289537005]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -190.0
+offset_right = 319.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/WinPanel" unique_id=846078438]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -77.5
+offset_right = 23.0
+offset_bottom = -54.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You win!!!!"
+
+[node name="NextLevelButton" type="Button" parent="Control/WinPanel" unique_id=620926630]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 5.5
+offset_right = 58.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Level"
+
+[node name="FinishGamePanel" type="Panel" parent="Control" unique_id=1163369940]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -190.0
+offset_right = 319.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/FinishGamePanel" unique_id=1984064246]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -77.5
+offset_right = 23.0
+offset_bottom = -54.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONGRATULATIONS!!!!
+You finish the game!!!
+Thank you for play!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackMenuButton" type="Button" parent="Control/FinishGamePanel" unique_id=815968169]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 5.5
+offset_right = 58.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart Game"
+
+[connection signal="area_entered" from="Urna/Area2D" to="CardManager" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Urna/Area2D" to="CardManager" method="_on_area_2d_area_exited"]

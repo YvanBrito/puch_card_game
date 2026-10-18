@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dflpn07xb1mrc"]
+
+[ext_resource type="Script" uid="uid://tvd5nnqcti51" path="res://punch.gd" id="1_hylu6"]
+
+[sub_resource type="Gradient" id="Gradient_qquw1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8w0r3"]
+gradient = SubResource("Gradient_qquw1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4t55"]
+size = Vector2(13, 14)
+
+[node name="Punch" type="Node2D" unique_id=1540843131]
+script = ExtResource("1_hylu6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=294675474]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(6.5, 7.0000005)
+scale = Vector2(0.05078125, 13.999999)
+texture = SubResource("GradientTexture1D_8w0r3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1627300093]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1297218255]
+position = Vector2(6.5, 7)
+shape = SubResource("RectangleShape2D_h4t55")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
