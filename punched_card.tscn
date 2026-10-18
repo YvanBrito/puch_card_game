@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bfqmiy3a7833" path="res://punchedcard.gd" id="1_e42ig"]
 [ext_resource type="Texture2D" uid="uid://8ybhcfeouj3l" path="res://paper-corner.png" id="2_oa5uu"]
 [ext_resource type="Texture2D" uid="uid://db7xtccju2at1" path="res://paper.png" id="3_jqfqd"]
+[ext_resource type="AudioStream" uid="uid://bc1jb331uvb5v" path="res://audio_init.wav" id="4_oa5uu"]
+[ext_resource type="AudioStream" uid="uid://bjb5xbpdjftq3" path="res://audio_end.wav" id="5_jqfqd"]
 
 [sub_resource type="Gradient" id="Gradient_e42ig"]
 offsets = PackedFloat32Array(0, 0.0036363637, 1)
@@ -15,6 +17,7 @@ gradient = SubResource("Gradient_e42ig")
 size = Vector2(368, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnrwc"]
+size = Vector2(35, 20)
 
 [sub_resource type="Animation" id="Animation_mnrwc"]
 length = 0.001
@@ -33,6 +36,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_e42ig"]
 resource_name = "falling"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,9 +56,15 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [],
+"method": &"play_init_soud"
+}, {
+"args": [],
+"method": &"play_end_soud"
+}, {
 "args": [],
 "method": &"collect_data"
 }]
@@ -71,14 +81,14 @@ script = ExtResource("1_e42ig")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1210005412]
 modulate = Color(0, 0, 0, 0.3372549)
-position = Vector2(195.00002, 116.5)
-scale = Vector2(5.5312505, 3.6093748)
+position = Vector2(254.5, 157)
+scale = Vector2(7.390625, 4.8749995)
 texture = SubResource("GradientTexture2D_8w0r3")
 
 [node name="Sprite2D4" type="Sprite2D" parent="." unique_id=475126415]
 modulate = Color(0, 0, 0, 0.3372549)
-position = Vector2(9, 125)
-scale = Vector2(0.28125033, 3.34375)
+position = Vector2(9, 165.5)
+scale = Vector2(0.28125033, 4.6093745)
 texture = SubResource("GradientTexture2D_8w0r3")
 
 [node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1601355475]
@@ -93,13 +103,13 @@ scale = Vector2(4.000001, 3.9999986)
 texture = ExtResource("2_oa5uu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=87820698]
-position = Vector2(193.31253, 116.000015)
-scale = Vector2(21.960934, 14.250001)
+position = Vector2(252.81253, 154.60834)
+scale = Vector2(29.398434, 19.076042)
 texture = ExtResource("3_jqfqd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=138906931]
-position = Vector2(10.000046, 124.000015)
-scale = Vector2(0.99999744, 13.25)
+position = Vector2(10.000046, 162.5)
+scale = Vector2(0.99999744, 18.062498)
 texture = ExtResource("3_jqfqd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1202345262]
@@ -117,7 +127,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1185497892]
-position = Vector2(53, -28)
+position = Vector2(111, 49)
 shape = SubResource("RectangleShape2D_mnrwc")
 
 [node name="punches" type="Node2D" parent="." unique_id=2118263712]
@@ -125,3 +135,9 @@ position = Vector2(22.000015, 39)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=761882430]
 libraries/ = SubResource("AnimationLibrary_oa5uu")
+
+[node name="Init" type="AudioStreamPlayer" parent="." unique_id=306566439]
+stream = ExtResource("4_oa5uu")
+
+[node name="End" type="AudioStreamPlayer" parent="." unique_id=830901169]
+stream = ExtResource("5_jqfqd")

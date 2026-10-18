@@ -46,7 +46,7 @@ func create_card() -> void:
 	cards_qtt = cards_qtt - 1
 	cards_quantity_label.text = "You have\n" + str(cards_qtt) + "\ncards"
 	isCardPresent = true
-	punched_card.position = Vector2(900,100)
+	punched_card.position = Vector2(600,200)
 	punched_card.z_index = 0
 
 func _process(delta: float) -> void:

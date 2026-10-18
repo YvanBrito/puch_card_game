@@ -6,6 +6,8 @@ var isBehind: bool = false
 
 @onready var punches: Node2D = $punches
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var init: AudioStreamPlayer = $Init
+@onready var end: AudioStreamPlayer = $End
 const COLUMN = preload("uid://duyoieugk0bhq")
 const PUNCH = preload("uid://dflpn07xb1mrc")
 
@@ -45,13 +47,13 @@ func _ready() -> void:
 	for n in range(0, 16):
 		var col = COLUMN.instantiate()
 		col.position.y = 40
-		col.position.x = 135 + (20 * n)
+		col.position.x = 135 + (28 * n)
 		punchesMatrix.append([])
 		for m in range(0, 12):
 			var p = PUNCH.instantiate()
 			col.add_child(p)
-			p.position.x = -116
-			p.position.y = (m * 17) - 15
+			p.position.x = -109
+			p.position.y = (m * 23) - 13
 			punchesMatrix[n].append(p)
 		add_child(col)
 
@@ -91,3 +93,9 @@ func reset():
 	for i in range(punchesMatrix.size()):
 		for j in range(punchesMatrix[i].size()):
 			punchesMatrix[i][j].reset()
+
+func play_init_soud():
+	init.play()
+
+func play_end_soud():
+	end.play()

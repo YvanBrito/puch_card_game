@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bick7kb5rrm6w" path="res://field.gd" id="3_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
-size = Vector2(524, 330)
+size = Vector2(674, 330)
 
 [node name="Node2D" type="Node2D" unique_id=336351371]
 
@@ -18,7 +18,8 @@ z_index = 4
 position = Vector2(1021, 719)
 
 [node name="Sprite2D" type="Sprite2D" parent="Urna" unique_id=582067500]
-scale = Vector2(32.468746, 8.031247)
+position = Vector2(-75.62502, 0)
+scale = Vector2(41.921875, 8.031247)
 texture = ExtResource("2_0xm2m")
 
 [node name="Area2D" type="Area2D" parent="Urna" unique_id=586332583]
@@ -26,14 +27,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Urna/Area2D" unique_id=260673355]
-position = Vector2(2, 99)
+position = Vector2(-73, 99)
 shape = SubResource("RectangleShape2D_8w0r3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Urna" unique_id=457578]
-offset_left = -156.0
-offset_top = -57.0
-offset_right = 154.0
-offset_bottom = -17.0
+offset_left = -239.0
+offset_top = -58.0
+offset_right = 71.0
+offset_bottom = -18.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_1bvp3")
 text = "Insert your card here"
@@ -76,8 +77,7 @@ theme_override_fonts/normal_font = ExtResource("3_1bvp3")
 text = "Up = 0 | 4
 Left = 12 | 3
 Right = 12 | 9
-Down = 11 | 4
-Get = 11 | 7"
+Down = 11 | 4"
 vertical_alignment = 1
 
 [node name="ErrorsLabel" type="RichTextLabel" parent="Control" unique_id=376124388]
